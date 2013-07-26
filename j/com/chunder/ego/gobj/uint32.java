@@ -14,6 +14,20 @@ public final class uint32 extends GObj {
 	_v = v;
     }
 
+    public static int shl(int a, int b) {
+	if (b >= 0 && b < 32) {
+	    return (int) (a << b);
+	}
+	return 0;
+    }
+
+    public static int shr(int a, int b) {
+	if (b >= 0 && b < 32) {
+	    return (int) ((((long) a) & 0xFFFFFFFF) >> b);
+	}
+	return 0;
+    }
+
     public static int div(int a, int b) {
 	return (int) ((((long) a) & 0xFFFFFFFF) / (((long) b) & 0xFFFFFFFF));
     }

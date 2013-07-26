@@ -14,6 +14,20 @@ public final class int16 extends GObj {
 	_v = v;
     }
 
+    public static short shl(short a, short b) {
+	if (b >= 0 && b < 16) {
+	    return (short) (a << b);
+	}
+	return 0;
+    }
+
+    public static short shr(short a, short b) {
+	if (b >= 0 && b < 16) {
+	    return (short) (a >> b);
+	}
+	return (short) (a >> 15);
+    }
+
     public static short div(short a, short b) {
 	boolean n;
 	if (a < 0) {

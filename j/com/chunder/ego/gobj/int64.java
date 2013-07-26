@@ -14,6 +14,20 @@ public final class int64 extends GObj {
 	_v = v;
     }
 
+    public static long shl(long a, long b) {
+	if (b >= 0 && b < 64) {
+	    return a << b;
+	}
+	return 0;
+    }
+
+    public static long shr(long a, long b) {
+	if (b >= 0 && b < 64) {
+	    return a >> b;
+	}
+	return a >> 63;
+    }
+
     public static long div(long a, long b) {
 	boolean n;
 	if (a < 0) {

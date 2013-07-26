@@ -14,6 +14,20 @@ public final class uint64 extends GObj {
 	_v = v;
     }
 
+    public static long shl(long a, long b) {
+	if (b >= 0 && b < 64) {
+	    return a << b;
+	}
+	return 0;
+    }
+
+    public static long shr(long a, long b) {
+	if (b >= 0 && b < 64) {
+	    return (a >> b) & ~(1 << (64 - b));
+	}
+	return 0;
+    }
+
     private static long shr1(long l) {
 	return (l >> 1) & ~(1L << 63);
     }

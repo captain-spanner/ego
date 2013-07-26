@@ -14,6 +14,20 @@ public final class int32 extends GObj {
 	_v = v;
     }
 
+    public static int shl(int a, int b) {
+	if (b >= 0 && b < 16) {
+	    return a << b;
+	}
+	return 0;
+    }
+
+    public static int shr(int a, int b) {
+	if (b >= 0 && b < 32) {
+	    return a >> b;
+	}
+	return a >> 31;
+    }
+
     public static int div(int a, int b) {
 	boolean n;
 	if (a < 0) {

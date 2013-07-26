@@ -14,6 +14,20 @@ public final class uint16 extends GObj {
 	_v = v;
     }
 
+    public static short shl(short a, short b) {
+	if (b >= 0 && b < 8) {
+	    return (short) (a << b);
+	}
+	return 0;
+    }
+
+    public static short shr(short a, short b) {
+	if (b >= 0 && b < 16) {
+	    return (short) ((((int) a) & 0xFFFF) >> b);
+	}
+	return 0;
+    }
+
     public static short div(short a, short b) {
 	return (short) ((((int) a) & 0xFFFF) / (((int) b) & 0xFFFF));
     }

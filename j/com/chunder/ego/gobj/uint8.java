@@ -14,12 +14,26 @@ public final class uint8 extends GObj {
 	_v = v;
     }
 
+    public static byte shl(byte a, byte b) {
+	if (b >= 0 && b < 8) {
+	    return (byte) (a << b);
+	}
+	return 0;
+    }
+
+    public static byte shr(byte a, byte b) {
+	if (b >= 0 && b < 8) {
+	    return (byte) ((((int) a) & 0xFF) >> b);
+	}
+	return 0;
+    }
+
     public static byte div(byte a, byte b) {
-	return (byte) ((((short) a) & 0xFF) / (((short) b) & 0xFF));
+	return (byte) ((((int) a) & 0xFF) / (((int) b) & 0xFF));
     }
 
     public static byte rem(byte a, byte b) {
-	return (byte) ((((short) a) & 0xFF) % (((short) b) & 0xFF));
+	return (byte) ((((int) a) & 0xFF) % (((int) b) & 0xFF));
     }
 
     public static boolean less(byte a, byte b) {

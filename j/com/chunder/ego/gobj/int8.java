@@ -14,7 +14,21 @@ public final class int8 extends GObj {
 	_v = v;
     }
 
-    public byte div(byte a, byte b) {
+    public static byte shl(byte a, byte b) {
+	if (b >= 0 && b < 8) {
+	    return (byte) (a << b);
+	}
+	return 0;
+    }
+
+    public static byte shr(byte a, byte b) {
+	if (b >= 0 && b < 8) {
+	    return (byte) (a >> b);
+	}
+	return (byte) (a >> 7);
+    }
+
+    public static byte div(byte a, byte b) {
 	boolean n;
 	if (a < 0) {
 	    a = (byte) -a;
@@ -33,7 +47,7 @@ public final class int8 extends GObj {
 	}
     }
 
-    public byte rem(byte a, byte b) {
+    public static byte rem(byte a, byte b) {
 	boolean n;
 	if (a < 0) {
 	    a = (byte) -a;
