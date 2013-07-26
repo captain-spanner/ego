@@ -9,45 +9,45 @@ public final class int32 extends GObj {
 	_v = 0;
     }
 
-    int32(short v) {
+    int32(int v) {
 	super();
 	_v = v;
     }
 
-    public static short div(short a, short b) {
+    public static int div(int a, int b) {
 	boolean n;
 	if (a < 0) {
-	    a = (short) -a;
+	    a = (int) -a;
 	    n = true;
 	} else {
 	    n = false;
 	}
 	if (b < 0) {
-	    b = (short) -b;
+	    b = (int) -b;
 	    n = !n;
 	}
 	if (n) {
-		return (short) -uint32.div(a, b);
+		return (int) -uint32.div(a, b);
 	} else {
-		return (short) uint32.div(a, b);
+		return (int) uint32.div(a, b);
 	}
     }
 
-    public static short rem(short a, short b) {
+    public static int rem(int a, int b) {
 	boolean n;
 	if (a < 0) {
-	    a = (short) -a;
+	    a = (int) -a;
 	    n = true;
 	} else {
 	    n = false;
 	}
 	if (b < 0) {
-	    b = (short) -b;
+	    b = (int) -b;
 	}
 	if (n) {
-		return (short) -uint32.rem(a, b);
+		return (int) -uint32.rem(a, b);
 	} else {
-		return (short) uint32.rem(a, b);
+		return (int) uint32.rem(a, b);
 	}
     }
 }
