@@ -23,7 +23,7 @@ public final class uint64 extends GObj {
 
     public static long shr(long a, long b) {
 	if (b >= 0 && b < 64) {
-	    return (a >> b) & ~(1 << (64 - b));
+	    return (a >> b) & ~(1L << (64 - b));
 	}
 	return 0;
     }
