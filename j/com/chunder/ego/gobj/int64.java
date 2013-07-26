@@ -13,4 +13,41 @@ public final class int64 extends GObj {
 	super();
 	_v = v;
     }
+
+    public static long div(long a, long b) {
+	boolean n;
+	if (a < 0) {
+	    a = (long) -a;
+	    n = true;
+	} else {
+	    n = false;
+	}
+	if (b < 0) {
+	    b = (long) -b;
+	    n = !n;
+	}
+	if (n) {
+		return (long) -uint64.div(a, b);
+	} else {
+		return (long) uint64.div(a, b);
+	}
+    }
+
+    public static long rem(long a, long b) {
+	boolean n;
+	if (a < 0) {
+	    a = (long) -a;
+	    n = true;
+	} else {
+	    n = false;
+	}
+	if (b < 0) {
+	    b = (long) -b;
+	}
+	if (n) {
+		return (long) -uint64.rem(a, b);
+	} else {
+		return (long) uint64.rem(a, b);
+	}
+    }
 }

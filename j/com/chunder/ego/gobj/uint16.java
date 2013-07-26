@@ -14,15 +14,15 @@ public final class uint16 extends GObj {
 	_v = v;
     }
 
-    public short div(short a, short b) {
+    public static short div(short a, short b) {
 	return (short) ((((int) a) & 0xFFFF) / (((int) b) & 0xFFFF));
     }
 
-    public short rem(short a, short b) {
+    public static short rem(short a, short b) {
 	return (short) ((((int) a) & 0xFFFF) % (((int) b) & 0xFFFF));
     }
 
-    public boolean less(short a, short b) {
+    public static boolean less(short a, short b) {
 	return (a - Short.MIN_VALUE) < (b - Short.MIN_VALUE);
     }
 }

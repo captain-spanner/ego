@@ -14,15 +14,15 @@ public final class uint8 extends GObj {
 	_v = v;
     }
 
-    public byte div(byte a, byte b) {
+    public static byte div(byte a, byte b) {
 	return (byte) ((((short) a) & 0xFF) / (((short) b) & 0xFF));
     }
 
-    public byte rem(byte a, byte b) {
+    public static byte rem(byte a, byte b) {
 	return (byte) ((((short) a) & 0xFF) % (((short) b) & 0xFF));
     }
 
-    public boolean less(byte a, byte b) {
+    public static boolean less(byte a, byte b) {
 	return (a - Byte.MIN_VALUE) < (b - Byte.MIN_VALUE);
     }
 }

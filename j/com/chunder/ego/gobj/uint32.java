@@ -14,15 +14,15 @@ public final class uint32 extends GObj {
 	_v = v;
     }
 
-    public int div(int a, int b) {
+    public static int div(int a, int b) {
 	return (int) ((((long) a) & 0xFFFFFFFF) / (((long) b) & 0xFFFFFFFF));
     }
 
-    public int rem(int a, int b) {
+    public static int rem(int a, int b) {
 	return (int) ((((long) a) & 0xFFFFFFFF) % (((long) b) & 0xFFFFFFFF));
     }
 
-    public boolean less(int a, int b) {
+    public static boolean less(int a, int b) {
 	return (a - Integer.MIN_VALUE) < (b - Integer.MIN_VALUE);
     }
 }

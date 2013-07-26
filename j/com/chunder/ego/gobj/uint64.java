@@ -14,12 +14,12 @@ public final class uint64 extends GObj {
 	_v = v;
     }
 
-    private long shr1(long l) {
+    private static long shr1(long l) {
 	return (l >> 1) & ~(1L << 63);
     }
 
     // ((n u>> 1) / d) * 2 within +1
-    public long div(long n, long d) {
+    public static long div(long n, long d) {
 	if (d < 0) {
 	    if (less(n, d)) {
 		return 1;
@@ -36,7 +36,7 @@ public final class uint64 extends GObj {
     }
 
     // same method as div
-    public long rem(long n, long d) {
+    public static long rem(long n, long d) {
 	if (d < 0) {
 	    if (less(n, d)) {
 		return n;
@@ -52,7 +52,7 @@ public final class uint64 extends GObj {
 	return r;
     }
 
-    public boolean less(long a, long b) {
+    public static boolean less(long a, long b) {
 	return (a - Long.MIN_VALUE) < (b - Long.MIN_VALUE);
     }
 }
