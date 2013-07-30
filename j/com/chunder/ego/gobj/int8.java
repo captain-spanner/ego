@@ -1,6 +1,6 @@
 package com.chunder.ego.gobj;
 
-public final class int8 extends GObj {
+public final class int8 extends GObj implements ptr8 {
     final static String _name = "int8";
     public byte _v;
 
@@ -63,5 +63,13 @@ public final class int8 extends GObj {
 	} else {
 		return (byte) uint8.rem(a, b);
 	}
+    }
+
+    public byte get() {
+	 return _v;
+    }
+
+    public void set(byte v) {
+	 _v = v;
     }
 }

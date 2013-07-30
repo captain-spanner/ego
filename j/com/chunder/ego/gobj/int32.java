@@ -1,6 +1,6 @@
 package com.chunder.ego.gobj;
 
-public final class int32 extends GObj {
+public final class int32 extends GObj implements ptr32 {
     final static String _name = "int32";
     public int _v;
 
@@ -63,5 +63,13 @@ public final class int32 extends GObj {
 	} else {
 		return (int) uint32.rem(a, b);
 	}
+    }
+
+    public int get() {
+	 return _v;
+    }
+
+    public void set(int v) {
+	 _v = v;
     }
 }

@@ -1,6 +1,6 @@
 package com.chunder.ego.gobj;
 
-public final class int16 extends GObj {
+public final class int16 extends GObj implements ptr16 {
     final static String _name = "int16";
     public short _v;
 
@@ -63,5 +63,13 @@ public final class int16 extends GObj {
 	} else {
 		return (short) uint16.rem(a, b);
 	}
+    }
+
+    public short get() {
+	 return _v;
+    }
+
+    public void set(short v) {
+	 _v = v;
     }
 }

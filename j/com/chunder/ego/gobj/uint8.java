@@ -1,6 +1,6 @@
 package com.chunder.ego.gobj;
 
-public final class uint8 extends GObj {
+public final class uint8 extends GObj implements ptr8 {
     final static String _name = "uint8";
     public byte _v;
 
@@ -38,5 +38,13 @@ public final class uint8 extends GObj {
 
     public static boolean less(byte a, byte b) {
 	return (a - Byte.MIN_VALUE) < (b - Byte.MIN_VALUE);
+    }
+
+    public byte get() {
+	 return _v;
+    }
+
+    public void set(byte v) {
+	 _v = v;
     }
 }

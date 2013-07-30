@@ -1,6 +1,6 @@
 package com.chunder.ego.gobj;
 
-public final class uint32 extends GObj {
+public final class uint32 extends GObj implements ptr32 {
     final static String _name = "uint32";
     public int _v;
 
@@ -38,5 +38,13 @@ public final class uint32 extends GObj {
 
     public static boolean less(int a, int b) {
 	return (a - Integer.MIN_VALUE) < (b - Integer.MIN_VALUE);
+    }
+
+    public int get() {
+	 return _v;
+    }
+
+    public void set(int v) {
+	 _v = v;
     }
 }
