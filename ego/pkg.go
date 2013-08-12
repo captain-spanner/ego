@@ -1,5 +1,10 @@
 package ego
 
+//
+//	Copyright(C) 2013 Bruce Ellis. All rights reserved.
+//	No unauthorized commercial use permitted.
+//
+
 import (
 	"fmt"
 	"go/ast"
@@ -90,4 +95,9 @@ func (pkg *Pkg) findFuncs() {
 	}
 	pkg.Decls = vs
 	pkg.Funcs = fs
+	for _, fn := range fs {
+		if fn.Body != nil {
+			CvtStmts(fn.Body.List)
+		}
+	}
 }

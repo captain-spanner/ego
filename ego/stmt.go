@@ -1,5 +1,10 @@
 package ego
 
+//
+//	Copyright(C) 2013 Bruce Ellis. All rights reserved.
+//	No unauthorized commercial use permitted.
+//
+
 import (
 	"go/ast"
 )
@@ -7,7 +12,7 @@ import (
 type Stmt struct {
 	Op Stmts
 	Orig ast.Stmt
-	Subs []*Dir
+	Body *Dir
 	Load interface {}
 }
 
@@ -16,7 +21,7 @@ type Stmts byte
 const (
 	Sxxxx Stmts = iota
 
-	Sassign	
+	Sassign
 )
 
 func cvtStmt(o ast.Stmt) *Stmt {
@@ -27,7 +32,15 @@ func cvtStmt(o ast.Stmt) *Stmt {
 		s.Op = Sassign
 		l := cvtExprs(t.Lhs)
 		r := cvtExprs(t.Rhs)
-		s.Subs = makeAssign(t.Tok, l, r)
+		s.Body = makeAssign(t.Tok, l, r)
 	}
 	return s
+}
+
+func CvtStmts(l []ast.Stmt) []*Stmt {
+	r := make([]*Stmt, len(l))
+	for i, s := range l {
+		r[i] = cvtStmt(s)
+	}
+	return r
 }

@@ -1,5 +1,10 @@
 package ego
 
+//
+//	Copyright(C) 2013 Bruce Ellis. All rights reserved.
+//	No unauthorized commercial use permitted.
+//
+
 import (
 	"go/ast"
 )
