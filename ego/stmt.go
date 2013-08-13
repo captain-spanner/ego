@@ -37,7 +37,7 @@ func cvtStmt(o ast.Stmt) *Stmt {
 	return s
 }
 
-func CvtStmts(l []ast.Stmt) []*Stmt {
+func cvtStmts(l []ast.Stmt) []*Stmt {
 	r := make([]*Stmt, len(l))
 	for i, s := range l {
 		r[i] = cvtStmt(s)

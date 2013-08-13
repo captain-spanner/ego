@@ -97,7 +97,7 @@ func (pkg *Pkg) findFuncs() {
 	pkg.Funcs = fs
 	for _, fn := range fs {
 		if fn.Body != nil {
-			CvtStmts(fn.Body.List)
+			cvtStmts(fn.Body.List)
 		}
 	}
 }

@@ -22,6 +22,34 @@ type Exprs byte
 
 const (
 	Exxxx Exprs = iota
+
+	unary_begin
+	Euadd
+	Eusub
+	Enot
+	unary_end
+
+	binary_begin
+	Eadd
+	Esub
+	Emul
+	Equo
+	Erem
+	Eand
+	Eor
+	Exor
+	Eshl
+	Eshr
+	Eand_not
+	Eland
+	Elor
+	Eeql
+	Elss
+	Egtr
+	Eneq
+	Eleq
+	Egeq
+	binary_end
 )
 
 type Dir struct {
@@ -46,13 +74,63 @@ func cvtExpr(o ast.Expr) *Expr {
 		_ = e
 
 	case *ast.BinaryExpr:
-		_ = e
+		switch e.Op {
+		case token.ADD:
+			x.Op = Eadd
+		case token.SUB:
+			x.Op = Esub
+		case token.MUL:
+			x.Op = Emul
+		case token.QUO:
+			x.Op = Equo
+		case token.REM:
+			x.Op = Erem
+		case token.AND:
+			x.Op = Eand
+		case token.OR:
+			x.Op = Eor
+		case token.XOR:
+			x.Op = Exor
+		case token.SHL:
+			x.Op = Eshl
+		case token.SHR:
+			x.Op = Eshr
+		case token.AND_NOT:
+			x.Op = Eand_not
+		case token.LAND:
+			x.Op = Eland
+		case token.LOR:
+			x.Op = Elor
+		case token.EQL:
+			x.Op = Eeql
+		case token.LSS:
+			x.Op = Elss
+		case token.GTR:
+			x.Op = Egtr
+		case token.NEQ:
+			x.Op = Eneq
+		case token.LEQ:
+			x.Op = Eleq
+		case token.GEQ:
+			x.Op = Egeq
+		default:
+			Bomb("BinaryExpr")
+		}
 
 	case *ast.StarExpr:
 		_ = e
 
 	case *ast.UnaryExpr:
-		_ = e
+		switch e.Op {
+		case token.ADD:
+			x.Op = Euadd
+		case token.SUB:
+			x.Op = Eusub
+		case token.NOT:
+			x.Op = Enot
+		default:
+			Bomb("UnaryExpr")
+		}
 
 	case *ast.BasicLit:
 		_ = e
