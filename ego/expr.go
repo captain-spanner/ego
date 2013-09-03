@@ -50,6 +50,8 @@ const (
 	Eleq
 	Egeq
 	binary_end
+
+	Estar
 )
 
 type Dir struct {
@@ -74,6 +76,8 @@ func cvtExpr(o ast.Expr) *Expr {
 		_ = e
 
 	case *ast.BinaryExpr:
+		cmp := false
+		shift := false
 		switch e.Op {
 		case token.ADD:
 			x.Op = Eadd
@@ -93,32 +97,49 @@ func cvtExpr(o ast.Expr) *Expr {
 			x.Op = Exor
 		case token.SHL:
 			x.Op = Eshl
+			shift = true
 		case token.SHR:
 			x.Op = Eshr
+			shift = true
 		case token.AND_NOT:
 			x.Op = Eand_not
 		case token.LAND:
 			x.Op = Eland
+			cmp = true
 		case token.LOR:
 			x.Op = Elor
+			cmp = true
 		case token.EQL:
 			x.Op = Eeql
+			cmp = true
 		case token.LSS:
 			x.Op = Elss
+			cmp = true
 		case token.GTR:
 			x.Op = Egtr
+			cmp = true
 		case token.NEQ:
 			x.Op = Eneq
+			cmp = true
 		case token.LEQ:
 			x.Op = Eleq
+			cmp = true
 		case token.GEQ:
 			x.Op = Egeq
+			cmp = true
 		default:
 			Bomb("BinaryExpr")
 		}
+		l := cvtExpr(e.X)
+		r := cvtExpr(e.Y)
+		x.Left = l
+		x.Right = r
+		_, _ = cmp, shift
 
 	case *ast.StarExpr:
-		_ = e
+		x.Op = Estar
+		l := cvtExpr(e.X)
+		x.Left = l
 
 	case *ast.UnaryExpr:
 		switch e.Op {
@@ -131,6 +152,8 @@ func cvtExpr(o ast.Expr) *Expr {
 		default:
 			Bomb("UnaryExpr")
 		}
+		l := cvtExpr(e.X)
+		x.Left = l
 
 	case *ast.BasicLit:
 		_ = e
