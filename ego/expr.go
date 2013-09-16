@@ -73,6 +73,7 @@ func cvtExpr(o ast.Expr) *Expr {
 		Bomb("BadExpr")
 
 	case *ast.Ident:
+		// Dump(o)
 		_ = e
 
 	case *ast.BinaryExpr:
@@ -156,7 +157,7 @@ func cvtExpr(o ast.Expr) *Expr {
 		x.Left = l
 
 	case *ast.BasicLit:
-		_ = e
+		x.basicLit(e)
 
 	case *ast.FuncLit:
 		_ = e
@@ -183,6 +184,9 @@ func cvtExpr(o ast.Expr) *Expr {
 		Bomb("Unknown Expr")
 	}
 	return x
+}
+
+func (x *Expr) basicLit(l *ast.BasicLit) {
 }
 
 func cvtExprs(v []ast.Expr) []*Expr {

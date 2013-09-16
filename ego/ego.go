@@ -5,6 +5,17 @@ package ego
 //	No unauthorized commercial use permitted.
 //
 
+import (
+	"fmt"
+	"go/printer"
+	"os"
+)
+
 func Bomb(s string) {
 	panic(s)
+}
+
+func Dump(node interface{}) {
+	printer.Fprint(os.Stdout, Cfg.Package.FileSet, node)
+	fmt.Println()
 }

@@ -5,10 +5,16 @@ package ego
 //	No unauthorized commercial use permitted.
 //
 
+import (
+	"go/ast"
+	"math/big"
+)
+
 type Ideal struct {
 	Op Ideals
-	Text string
-	Data interface {}
+	Literal *ast.BasicLit
+	Int *big.Int
+	Float float64
 }
 
 type Ideals byte

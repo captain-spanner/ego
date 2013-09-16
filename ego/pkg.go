@@ -25,6 +25,7 @@ type Ego struct {
 	JavaDir  string
 	JavaPkg  string
 	JavaPath string
+	Package *Pkg	// ephemeral
 }
 
 type Pkg struct {
@@ -70,6 +71,7 @@ func pkgFilter(info os.FileInfo) bool {
 }
 
 func (pkg *Pkg) findFuncs() {
+	pkg.Current()
 	decls := pkg.File.Decls
 	v, f := 0, 0
 	for _, decl := range decls {
@@ -100,4 +102,8 @@ func (pkg *Pkg) findFuncs() {
 			cvtStmts(fn.Body.List)
 		}
 	}
+}
+
+func (pkg *Pkg) Current() {
+	Cfg.Package = pkg
 }
